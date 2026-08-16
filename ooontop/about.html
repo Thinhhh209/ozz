@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giới thiệu — NPTT.SHOP</title>
+<meta name="description" content="NPTT.SHOP là gì, vì sao chúng tôi tổng hợp deal mỗi ngày và cách chúng tôi dùng link liên kết.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏷️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          canvas: '#F8FAFC',
+          brand: { red: '#EF4444', orange: '#F97316', purple: '#8B5CF6', pink: '#EC4899' },
+        },
+        fontFamily: {
+          display: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-canvas text-slate-800 antialiased">
+
+<canvas id="sakuraCanvas" aria-hidden="true"></canvas>
+
+<header class="site-header sticky top-0 z-40 bg-canvas/80 backdrop-blur border-b border-slate-200 transition-shadow duration-300" data-site-header x-data="navMenu()">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="font-display font-extrabold text-[clamp(18px,4vw,22px)] bg-gradient-to-r from-brand-purple to-brand-pink bg-clip-text text-transparent">🏷️ NPTT.SHOP</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="/" class="hover:text-brand-purple transition-colors">Trang chủ</a>
+        <a href="/about.html" class="text-slate-900 font-semibold">Giới thiệu</a>
+        <a href="/tiktok.html" class="hover:text-brand-purple transition-colors">TikTok</a>
+        <a href="/contact.html" class="hover:text-brand-purple transition-colors">Liên hệ</a>
+      </nav>
+      <button @click="toggle()" class="md:hidden w-10 h-10 grid place-items-center rounded-full border border-slate-200" :aria-expanded="open" aria-label="Mở menu">
+        <span x-text="open ? '✕' : '☰'"></span>
+      </button>
+    </div>
+    <nav x-show="open" x-transition class="md:hidden pb-4 flex flex-col gap-3 text-sm font-medium text-slate-600" x-cloak>
+      <a @click="close()" href="/">Trang chủ</a>
+      <a @click="close()" href="/about.html" class="text-slate-900 font-semibold">Giới thiệu</a>
+      <a @click="close()" href="/tiktok.html">TikTok</a>
+      <a @click="close()" href="/contact.html">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 sm:px-6">
+  <section class="pt-14 pb-6">
+    <span class="text-xs font-bold uppercase tracking-wide text-brand-purple">🏷️ Về NPTT.SHOP</span>
+    <h1 class="font-display font-extrabold text-[clamp(24px,5vw,36px)] leading-tight mt-3">Một trang, gom hết deal hời — để bạn khỏi phải mở chục tab.</h1>
+  </section>
+
+  <section class="pb-16 flex flex-col gap-5 text-slate-600 leading-relaxed">
+    <p><strong class="text-slate-800">NPTT.SHOP</strong> tổng hợp mã giảm giá và deal ngon từ Shopee một nơi duy nhất, cập nhật mỗi ngày, để bạn chỉ cần lướt một trang là đủ thay vì canh nhiều app cùng lúc.</p>
+    <p>Mục đích của trang là giúp việc săn deal bớt mất thời gian: lọc theo sàn, xem nhanh giá và mô tả, rồi bấm lấy ưu đãi trong vài giây.</p>
+    <p>Mỗi nút <strong class="text-slate-800">"NHẬN ƯU ĐÃI"</strong> sẽ đưa bạn đến đúng trang sản phẩm trên sàn tương ứng. Một số link trong đó là <strong class="text-slate-800">link liên kết (affiliate)</strong> — nếu bạn đặt hàng qua link này,sẽ giúp bạn mua được sản phẩm với giá tốt hơn.</p>
+    <p>Giá, số lượng và thời gian áp dụng của mỗi deal do sàn và nhà bán quyết định, có thể thay đổi hoặc hết hạn bất kỳ lúc nào — NPTT.SHOP cố gắng cập nhật nhanh nhất có thể nhưng khuyên bạn kiểm tra lại giá trước khi thanh toán.</p>
+    <a href="/" class="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-brand-purple to-brand-pink px-5 py-2.5 rounded-full w-fit mt-2 hover:opacity-90 transition-opacity">← Về trang chủ</a>
+  </section>
+</main>
+
+<footer class="site-footer border-t border-slate-200 bg-white/60">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-wrap justify-between gap-8">
+    <div class="max-w-xs">
+      <a href="/" class="font-display font-extrabold text-lg bg-gradient-to-r from-brand-purple to-brand-pink bg-clip-text text-transparent">🏷️ NPTT.SHOP</a>
+      <p class="text-sm text-slate-500 mt-2">Tổng hợp mã giảm giá &amp; deal hời mỗi ngày từ các sàn thương mại điện tử.</p>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-8 text-xs text-slate-400 border-t border-slate-100 pt-5">
+    © <span data-year></span> NPTT.SHOP.
+  </div>
+</footer>
+
+<script defer src="/script.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</body>
+</html>
