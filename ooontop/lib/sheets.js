@@ -137,4 +137,52 @@ function toFriendlyError(err) {
   return { status: 500, code: "google_api_error", message: "Có lỗi không xác định khi truy cập Google Sheet." };
 }
 
-module.exports = { getDeals, incrementClicks, toFriendlyError, SHEET_TAB_NAME };
+
+const BASE62_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const OFFSET = 1000000000;      
+const SECRET = 'nptt.shop';     
+
+function generateAlphabet(secret) {
+  const chars = BASE62_CHARS.split('');
+  let seed = 0;
+  for (let i = 0; i < secret.length; i++) {
+    seed = (seed * 31 + secret.charCodeAt(i)) >>> 0;
+  }
+  function random() {
+    seed ^= seed << 13;
+    seed ^= seed >> 17;
+    seed ^= seed << 5;
+    return (seed >>> 0) / 4294967296;
+  }
+  for (let i = chars.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [chars[i], chars[j]] = [chars[j], chars[i]];
+  }
+  return chars.join('');
+}
+
+function encodeId(id) {
+  const alphabet = generateAlphabet(SECRET);
+  let n = Number(id) + OFFSET;
+  const base = alphabet.length;
+  let encoded = '';
+  do {
+    encoded = alphabet[n % base] + encoded;
+    n = Math.floor(n / base);
+  } while (n > 0);
+  return encoded;
+}
+
+function decodeId(code) {
+  const alphabet = generateAlphabet(SECRET);
+  const base = alphabet.length;
+  let n = 0;
+  for (let i = 0; i < code.length; i++) {
+    const index = alphabet.indexOf(code[i]);
+    if (index === -1) return null;
+    n = n * base + index;
+  }
+  return n - OFFSET;
+}
+
+module.exports = { getDeals, incrementClicks, toFriendlyError, SHEET_TAB_NAME, encodeId, decodeId };
